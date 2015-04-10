@@ -32,7 +32,31 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#user auth via devise
+gem 'devise'
+
+#figaro for keys
+gem 'figaro'
+
+#httparty for internet things
+gem 'httparty'
+
+#paperclip for file uploads
+gem 'paperclip'
+
+#aws for paperclip
+gem 'aws-sdk', '< 2.0'
+
 group :development, :test do
+  #proxylocal for bob
+  gem 'proxylocal'
+
+  gem 'pry'
+
+  gem 'pry-rails'
+
+  gem 'better_errors'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
