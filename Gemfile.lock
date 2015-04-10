@@ -245,7 +245,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
-  documentation
+  documentation (~> 1.0.0)
   faker
   figaro
   httparty

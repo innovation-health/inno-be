@@ -52,7 +52,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'rack-cors'
 
 #lets do docs differnetly
-gem 'documentation'
+gem 'documentation', '~> 1.0.0'
 
 group :development, :test do
   #proxylocal for bob
