@@ -47,6 +47,12 @@ gem 'paperclip'
 #aws for paperclip
 gem 'aws-sdk', '< 2.0'
 
+#cors for bob
+gem 'rack-cors'
+
+#lets do docs differnetly
+gem 'documentation'
+
 group :development, :test do
   #proxylocal for bob
   gem 'proxylocal'
@@ -56,6 +62,17 @@ group :development, :test do
   gem 'pry-rails'
 
   gem 'better_errors'
+  gem 'binding_of_caller'
+
+  #faker for data
+  gem 'faker'
+
+  #watch sql queries
+  gem 'bullet'
+
+  #add comments to routs
+  gem 'annotate'
+
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
