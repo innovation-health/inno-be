@@ -5,6 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
       return false
     end
     @user = User.new(user_params)
+    binding.pry
     if @user.save
       render json: { :user => @user }, status: :created
     else
