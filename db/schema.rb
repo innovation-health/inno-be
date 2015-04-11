@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411195219) do
+ActiveRecord::Schema.define(version: 20150411200514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,9 +45,11 @@ ActiveRecord::Schema.define(version: 20150411195219) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.integer "patient_id"
-    t.integer "stay_id"
-    t.text    "note"
+    t.integer  "patient_id"
+    t.integer  "stay_id"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "notes", ["patient_id"], name: "index_notes_on_patient_id", using: :btree
@@ -62,14 +64,18 @@ ActiveRecord::Schema.define(version: 20150411195219) do
   add_index "primary_teams", ["staff_id"], name: "index_primary_teams_on_staff_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string  "question"
-    t.boolean "resolved"
-    t.integer "patient_id"
-    t.integer "stay_id"
+    t.string   "question"
+    t.boolean  "resolved"
+    t.integer  "patient_id"
+    t.integer  "stay_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "stays", force: :cascade do |t|
-    t.integer "patient_id"
+    t.integer  "patient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,8 +106,10 @@ ActiveRecord::Schema.define(version: 20150411195219) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "visits", force: :cascade do |t|
-    t.integer "staff_id"
-    t.integer "patient_id"
+    t.integer  "staff_id"
+    t.integer  "patient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "visits", ["patient_id"], name: "index_visits_on_patient_id", using: :btree
