@@ -1,6 +1,63 @@
+# == Route Map
+#
+#                   Prefix Verb   URI Pattern                     Controller#Action
+#            documentation        /docs                           Documentation::Engine
+#         new_user_session GET    /users/sign_in(.:format)        sessions#new
+#             user_session POST   /users/sign_in(.:format)        sessions#create
+#     destroy_user_session DELETE /users/sign_out(.:format)       sessions#destroy
+#            user_password POST   /users/password(.:format)       devise/passwords#create
+#        new_user_password GET    /users/password/new(.:format)   devise/passwords#new
+#       edit_user_password GET    /users/password/edit(.:format)  devise/passwords#edit
+#                          PATCH  /users/password(.:format)       devise/passwords#update
+#                          PUT    /users/password(.:format)       devise/passwords#update
+# cancel_user_registration GET    /users/cancel(.:format)         registrations#cancel
+#        user_registration POST   /users(.:format)                registrations#create
+#    new_user_registration GET    /users/sign_up(.:format)        registrations#new
+#   edit_user_registration GET    /users/edit(.:format)           registrations#edit
+#                          PATCH  /users(.:format)                registrations#update
+#                          PUT    /users(.:format)                registrations#update
+#                          DELETE /users(.:format)                registrations#destroy
+#           timeline_index GET    /timeline(.:format)             timeline#index
+#                 timeline GET    /timeline/:id(.:format)         timeline#show
+#         department_staff GET    /staff/:id/department(.:format) staff#department
+#              staff_index GET    /staff(.:format)                staff#index
+#                          POST   /staff(.:format)                staff#create
+#                new_staff GET    /staff/new(.:format)            staff#new
+#               edit_staff GET    /staff/:id/edit(.:format)       staff#edit
+#                    staff GET    /staff/:id(.:format)            staff#show
+#                          PATCH  /staff/:id(.:format)            staff#update
+#                          PUT    /staff/:id(.:format)            staff#update
+#                          DELETE /staff/:id(.:format)            staff#destroy
+#                 check_in POST   /check_in(.:format)             check_ins#create
+#             new_check_in GET    /check_in/new(.:format)         check_ins#new
+#            edit_check_in GET    /check_in/edit(.:format)        check_ins#edit
+#                          GET    /check_in(.:format)             check_ins#show
+#                          PATCH  /check_in(.:format)             check_ins#update
+#                          PUT    /check_in(.:format)             check_ins#update
+#                          DELETE /check_in(.:format)             check_ins#destroy
+#
+# Routes for Documentation::Engine:
+#          new_page GET|POST  /new(/*path)(.:format)         documentation/pages#new
+#  page_positioning GET|POST  /positioning(/*path)(.:format) documentation/pages#positioning
+#         edit_page GET|PATCH /edit(/*path)(.:format)        documentation/pages#edit
+#       delete_page DELETE    /delete(/*path)(.:format)      documentation/pages#destroy
+# upload_screenshot GET|POST  /screenshot(.:format)          documentation/pages#screenshot
+#            search GET       /search(.:format)              documentation/pages#search
+#              page GET       /*path(.:format)               documentation/pages#show
+#              root GET       /                              documentation/pages#index
+#
+
 Rails.application.routes.draw do
   mount Documentation::Engine => "/docs"
   devise_for :users, :controllers => { :registrations => "registrations", :sessions => "sessions"}
+
+  resources :timeline, only: [:index, :show]
+  resources :staff do
+    member do
+      get 'department'
+    end
+  end
+
   resource :check_in
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -57,3 +114,4 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+

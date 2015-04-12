@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411200514) do
+ActiveRecord::Schema.define(version: 20150412001645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,14 +46,13 @@ ActiveRecord::Schema.define(version: 20150411200514) do
 
   create_table "notes", force: :cascade do |t|
     t.integer  "patient_id"
-    t.integer  "stay_id"
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "visit_id"
   end
 
   add_index "notes", ["patient_id"], name: "index_notes_on_patient_id", using: :btree
-  add_index "notes", ["stay_id"], name: "index_notes_on_stay_id", using: :btree
 
   create_table "primary_teams", force: :cascade do |t|
     t.integer "patient_id"
@@ -67,15 +66,9 @@ ActiveRecord::Schema.define(version: 20150411200514) do
     t.string   "question"
     t.boolean  "resolved"
     t.integer  "patient_id"
-    t.integer  "stay_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "stays", force: :cascade do |t|
-    t.integer  "patient_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "visit_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,6 +92,7 @@ ActiveRecord::Schema.define(version: 20150411200514) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "role"
+    t.string   "department"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", using: :btree

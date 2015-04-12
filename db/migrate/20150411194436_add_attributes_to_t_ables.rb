@@ -1,4 +1,4 @@
-class AddAttributesToTAbles < ActiveRecord::Migration
+class AddAttributesToTables < ActiveRecord::Migration
   def change
     rename_column :notes, :stay, :stay_id
     add_index :notes, :stay_id

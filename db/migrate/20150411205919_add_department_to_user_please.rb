@@ -1,4 +1,4 @@
-class AddDepartmentToUser < ActiveRecord::Migration
+class AddDepartmentToUserPlease < ActiveRecord::Migration
   def change
     add_column :users, :department, :string
   end
