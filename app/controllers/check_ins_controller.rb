@@ -11,12 +11,15 @@ class CheckInsController < ApplicationController
   end
 
   def index
-    @recent_check_in = Visit.where(:created_at => Time.now - 1.second..Time.now)
+    @recent_check_in = Visit.where(:created_at => Time.now - 1.day..Time.now)
     if @recent_check_in.exists?
-      render json: true, status: :ok
+      @recent_check_in = @recent_check_in.first  #just for the demo, incase there are more than one checkins
+      render 'check_in/index.json.jbuilder', status: :ok
     else
       render json: false, status: :ok
     end
+    #patient id
+    #staff id
   end
 
   private
