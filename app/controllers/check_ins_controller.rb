@@ -10,6 +10,15 @@ class CheckInsController < ApplicationController
   render json: @visit, status: :ok
   end
 
+  def index
+    @recent_check_in = Visit.where(:created_at => Time.now - 1.second..Time.now)
+    if @recent_check_in.exists?
+      render json: true, status: :ok
+    else
+      render json: false, status: :ok
+    end
+  end
+
   private
   def set_parties
     #  @staff = Staff.where(params[:staff_id]).first
