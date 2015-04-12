@@ -4,7 +4,7 @@ class PatientController < ApplicationController
 
   def timeline
     if !!@patient
-      render json: "patient/timeline.json.jbuilder", status: :ok
+      render json: @visits, status: :ok
     else
       render json: @patient.errors.full_messages, status: :not_found
     end

@@ -1,4 +1,4 @@
-json patient @patient.first_name
+json.patient @patient.first_name
 
 
 

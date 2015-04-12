@@ -62,7 +62,7 @@ Rails.application.routes.draw do
       end
     end
   end
-
+resources :staff
   
 
   post 'check_in', to: 'check_ins#create', as: :check_in
