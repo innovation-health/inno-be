@@ -3,7 +3,11 @@ class TimelineController < ApplicationController
   before_action :set_patient_timeline, only: :index 
 
   def index
-    
+    if @patient
+      render json: "timelines/index.json.jbuilder", status: :ok
+    else
+      render json: @patient.errors.full_messages, status: :not_found
+    end
   end
 
   def show
@@ -13,14 +17,14 @@ class TimelineController < ApplicationController
   private
 
   def set_patient_timeline
-    @visits = Patient.grab_patient_associations(params[:id])
-    @staff = @patient.staffs
-    @visits = @patient.visits
+    @patient = Patient.grab_patient_associations(params[:id])
+    @visits = patient.visits
+    @questions = @visits.map(&:questions).flatten.map(&:unresolved)
+    @notes = @visits.map(&:note).compact
   end
 
   def set_staff_swipe
 
-    # @patient = Patient.includes(:notes, :questions, visits: :staff).where(id: params[:id]).first.staffs.where(department: )
   end
 
 
