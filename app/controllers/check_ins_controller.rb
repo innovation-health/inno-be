@@ -1,5 +1,4 @@
 class CheckInsController < ApplicationController
-  before_action :set_parties
 
   def create
 
