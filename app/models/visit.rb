@@ -14,4 +14,8 @@ class Visit < ActiveRecord::Base
   belongs_to :patient
   has_one    :note
   has_many   :questions
+
+  def department_visit(staff)
+    self.staff.department == staff.department
+  end
 end

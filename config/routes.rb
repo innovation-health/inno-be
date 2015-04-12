@@ -57,10 +57,12 @@ Rails.application.routes.draw do
   mount Documentation::Engine => "/docs"
   devise_for :users, :controllers => { :registrations => "registrations", :sessions => "sessions"}
 
-    resources :patient
-    get 'patient/:id/timeline', to: 'patient#show'
-      # member do
-      #   get 'timeline'
+    resources :patient do
+      get 'staff/:id/department', to: 'patient#visit_department', as: :visit_department
+      member do
+        get 'timeline'
+      end
+    end
 
     # resources :staff do
     #   member do

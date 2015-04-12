@@ -38,4 +38,8 @@ class Staff < User
    self.prefix + " " + self.first_name + " " + self.last_name if self.prefix && self.first_name && self.last_name
    self.first_name + " " + self.last_name if self.first_name && self.last_name
   end
+
+  def self.department_staff(staff)
+    Staff.where(department: staff.id)
+  end
 end
