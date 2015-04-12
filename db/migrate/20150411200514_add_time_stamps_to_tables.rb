@@ -6,9 +6,6 @@ class AddTimeStampsToTables < ActiveRecord::Migration
     add_column(:questions, :created_at, :datetime)
     add_column(:questions, :updated_at, :datetime)
 
-    add_column(:stays, :created_at, :datetime)
-    add_column(:stays, :updated_at, :datetime)
-
     add_column(:visits, :created_at, :datetime)
     add_column(:visits, :updated_at, :datetime)
   end

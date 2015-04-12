@@ -2,6 +2,9 @@ class CheckInsController < ApplicationController
   before_action :set_parties
 
   def create
+    #params coming in from matt
+    #Parameters: {"@personid"=>"770097295B92", "@facilityid"=>"3693CAFE1234", "@roomid"=>"11BADF00D111", "@statuscode"=>"201"}
+  @visit = @
   end
 
   private
