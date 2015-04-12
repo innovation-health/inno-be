@@ -2,6 +2,7 @@ models = [Patient, Staff, Note, PrimaryTeam, Question, Visit]
 models.each {|model| model.all.delete_all}
 
 Patient.create(email: 'patient@gmail.com', password: 'p', title: 'Patient', first_name: 'Sally', last_name: 'Sue')
+patient = Patient.first; patient.id = 1; patient.save
 pid = Patient.first.id
 
 Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Charles', last_name:  'Costa',     title: 'Physician', role: 'Attending', department:  'Cardiology')
@@ -23,6 +24,9 @@ def rand_staff
 end
 
 
+demo_doctor = Staff.where(first_name: "Charles").first
+demo_doctor.id = 770097295; demo_doctor.save
+
 s       = Staff.find_by_first_name('Marina')
 ss      = Staff.find_by_first_name('Charles')
 sss     = Staff.find_by_first_name('Ilya')
@@ -31,30 +35,26 @@ sssss   = Staff.find_by_first_name('Dennis')
 ssssss  = Staff.find_by_first_name('Julien')
 sssssss = Staff.find_by_first_name('Kristi')
 
-PrimaryTeam.create(patient_id: pid, staff_id: s)
-PrimaryTeam.create(patient_id: pid, staff_id: ss)
-PrimaryTeam.create(patient_id: pid, staff_id: sss)
-PrimaryTeam.create(patient_id: pid, staff_id: ssss)
-PrimaryTeam.create(patient_id: pid, staff_id: sssss)
-PrimaryTeam.create(patient_id: pid, staff_id: ssssss)
-PrimaryTeam.create(patient_id: pid, staff_id: sssssss)
+PrimaryTeam.create(patient_id: pid, staff_id: s.id)
+PrimaryTeam.create(patient_id: pid, staff_id: ss.id)
+PrimaryTeam.create(patient_id: pid, staff_id: sss.id)
+PrimaryTeam.create(patient_id: pid, staff_id: ssss.id)
+PrimaryTeam.create(patient_id: pid, staff_id: sssss.id)
+PrimaryTeam.create(patient_id: pid, staff_id: ssssss.id)
+PrimaryTeam.create(patient_id: pid, staff_id: sssssss.id)
 
-demo_doctor = Staff.where(first_name: "Charles").first
-demo_doctor.id = 770097295; demo_doctor.save
-
-
-Visit.create(created_at: DateTime.now.change({hour: 8, min: 30}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 8, min: 30}), patient_id: pid, staff_id: ss.id) 
 Visit.create(created_at: DateTime.now.change({hour: 9, min: 03}), patient_id: pid, staff_id: rand_staff) 
 Visit.create(created_at: DateTime.now.change({hour: 8, min: 20}), patient_id: pid, staff_id: demo_doctor.id) 
-Visit.create(created_at: DateTime.now.change({hour: 8, min: 04}), patient_id: pid, staff_id: rand_staff) 
-Visit.create(created_at: DateTime.now.change({hour: 7, min: 48}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 8, min: 04}), patient_id: pid, staff_id: ssss.id) 
+Visit.create(created_at: DateTime.now.change({hour: 7, min: 48}), patient_id: pid, staff_id: ss.id) 
 Visit.create(created_at: DateTime.now.change({hour: 6, min: 30}), patient_id: pid, staff_id: demo_doctor.id) 
 Visit.create(created_at: DateTime.now.change({hour: 13, min: 30}), patient_id: pid, staff_id: rand_staff) 
-Visit.create(created_at: DateTime.now.change({hour: 21, min: 20}), patient_id: pid, staff_id: rand_staff) 
-Visit.create(created_at: DateTime.now.change({hour: 19, min: 50}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 21, min: 20}), patient_id: pid, staff_id: sss.id) 
+Visit.create(created_at: DateTime.now.change({hour: 19, min: 50}), patient_id: pid, staff_id: s.id) 
 Visit.create(created_at: DateTime.now.change({hour: 19, min: 02}), patient_id: pid, staff_id: demo_doctor.id) 
 Visit.create(created_at: DateTime.now.change({hour: 18, min: 02}), patient_id: pid, staff_id: rand_staff) 
-Visit.create(created_at: DateTime.now.change({hour: 17, min: 50}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 17, min: 50}), patient_id: pid, staff_id: ssssss.id) 
 Visit.create(created_at: DateTime.now.change({hour: 15, min: 20}), patient_id: pid, staff_id: rand_staff) 
 
 def rand_visit
