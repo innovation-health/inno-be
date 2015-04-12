@@ -1,30 +1,24 @@
-class TimelineController < ApplicationController
-  before_action :authenticate_from_user_token!
-  before_action :set_patient_timeline, only: :index 
+class PatientController < ApplicationController
+  # before_action :authenticate_from_user_token!
+  before_action :set_patient_timeline, only: :timeline
 
-  def index
-    if @patient
-      render json: "timelines/index.json.jbuilder", status: :ok
+  def timeline
+    if !!@patient
+      render json: "patient/timeline.json.jbuilder", status: :ok
     else
       render json: @patient.errors.full_messages, status: :not_found
     end
   end
 
-  def show
-  end
 
 
   private
 
   def set_patient_timeline
     @patient = Patient.grab_patient_associations(params[:id])
-    @visits = patient.visits
-    @questions = @visits.map(&:questions).flatten.map(&:unresolved)
+    @visits = @patient.visits
+    @questions = @visits.map(&:questions).flatten.map(&:unresolved?)
     @notes = @visits.map(&:note).compact
-  end
-
-  def set_staff_swipe
-
   end
 
 

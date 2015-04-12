@@ -54,6 +54,9 @@ gem 'rack-cors'
 #lets do docs differnetly
 gem 'documentation', '~> 1.0.0'
 
+#seed file
+gem 'seed_dump'
+
 group :development, :test do
   #proxylocal for bob
   gem 'proxylocal'
