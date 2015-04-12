@@ -4,13 +4,12 @@
 #
 #  id         :integer          not null, primary key
 #  question   :string
-#  resolved   :boolean
+#  resolved   :boolean          default(FALSE)
 #  patient_id :integer
 #  created_at :datetime
 #  updated_at :datetime
 #  visit_id   :integer
 #
-
 
 class Question < ActiveRecord::Base
   belongs_to :patient

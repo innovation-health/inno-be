@@ -19,11 +19,11 @@
 #  admin                  :boolean          default(FALSE)
 #  type                   :string
 #  prefix                 :string
-#  title       pat           :string
+#  title                  :string
 #  first_name             :string
 #  last_name              :string
 #  role                   :string
-#  department             :string
+#  department             :string           default("")
 #
 
 class Patient < User

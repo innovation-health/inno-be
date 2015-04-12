@@ -6,8 +6,8 @@ class CheckInsController < ApplicationController
   #Parameters: {"@personid"=>"770097295", "@facilityid"=>"3693CAFE1234", "@roomid"=>"11BADF00D111", "@statuscode"=>"201"}
   @visit = Visit.new(:staff_id => params[:@personid], :patient_id => 1)
   @visit.save
-  redirect_to patient_visit_department_path(patient_id: @visit.patient_id, id: @visit.staff_id)
-  # render json: @visit, status: :ok
+  # redirect_to patient_visit_department_path(patient_id: @visit.patient_id, id: @visit.staff_id)
+  render json: @visit, status: :ok
   end
 
   def index
