@@ -1,35 +1,19 @@
 class TimelineController < ApplicationController
   before_action :authenticate_from_user_token!
-  before_action :set_patient_timeline, only: :index
-  before_action :set_staff_swipe, only: 
+  before_action :set_patient_timeline, only: :index 
 
   def index
-
-  end
-
-  def new
-  end
-
-  def create
-  end
-
-  def edit
-  end
-
-  def update
+    
   end
 
   def show
-  end
-
-  def destroy
   end
 
 
   private
 
   def set_patient_timeline
-    @patient = Patient.grab_patient_associations(params[:id])
+    @visits = Patient.grab_patient_associations(params[:id])
     @staff = @patient.staffs
     @visits = @patient.visits
   end

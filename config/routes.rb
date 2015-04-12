@@ -29,12 +29,6 @@
 #                          PUT    /staff/:id(.:format)            staff#update
 #                          DELETE /staff/:id(.:format)            staff#destroy
 #                 check_in POST   /check_in(.:format)             check_ins#create
-#             new_check_in GET    /check_in/new(.:format)         check_ins#new
-#            edit_check_in GET    /check_in/edit(.:format)        check_ins#edit
-#                          GET    /check_in(.:format)             check_ins#show
-#                          PATCH  /check_in(.:format)             check_ins#update
-#                          PUT    /check_in(.:format)             check_ins#update
-#                          DELETE /check_in(.:format)             check_ins#destroy
 #
 # Routes for Documentation::Engine:
 #          new_page GET|POST  /new(/*path)(.:format)         documentation/pages#new
@@ -58,7 +52,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :check_in
+  post 'check_in', to: 'check_ins#create', as: :check_in
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
