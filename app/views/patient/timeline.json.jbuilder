@@ -5,7 +5,7 @@ json.visits do
 		json.name 		   v.staff.build_name
 		json.role 		   v.staff.role
 		json.department    v.staff.department
-		json.primary_team? v.patient.primary_team_includes? v.staff
+		json.primary_team? v.patient.primary_team_includes? v.staff.id
 		json.note          v.note
 		json.questions do
 			json.array! v.questions do |q|

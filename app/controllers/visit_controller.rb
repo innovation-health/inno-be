@@ -1,4 +1,3 @@
-
 class VisitController < ApplicationController
   # before_action :authenticate_user_from_token!
   before_action :set_visit, only: [:question, :note]
