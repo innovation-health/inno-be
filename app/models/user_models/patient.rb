@@ -43,7 +43,6 @@ class Patient < User
   end
 
   def primary_team_includes?(staff_id)
-    binding.pry
     self.primary_team.map(&:staff_id).include? staff_id
   end
 

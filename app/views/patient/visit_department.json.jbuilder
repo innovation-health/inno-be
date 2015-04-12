@@ -5,7 +5,6 @@ json.current_visit do
 	json.name 		   @staff.build_name
 	json.role 		   @staff.role
 	json.department    @staff.department
-	binding.pry
 	json.primary_team? @current_visit.patient.primary_team_includes? @current_visit.staff.id
 	json.note          @current_visit.note
 	json.questions do

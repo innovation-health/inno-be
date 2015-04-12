@@ -1,6 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
   def create
-    binding.pry
     if params[:user][:password] != params[:user][:password_confirmation]
       render json: { :error => "Passwords do not match" }, status: :bad_request
       return false

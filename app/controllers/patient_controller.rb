@@ -31,8 +31,6 @@ class PatientController < ApplicationController
     @staff = Staff.find params[:id]
     @current_visit = @patient.visits[-1]
     @unresolved = @patient.visits.map(&:questions).flatten.map(&:unresolved?).compact
-    binding.pry
     @department_visits = @patient.visits.select {|v| v.department_visit(@staff)}
     @resolved = @patient.visits.map(&:questions).flatten.reject(&:unresolved?).compact
   end
-end
