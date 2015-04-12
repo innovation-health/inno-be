@@ -27,14 +27,10 @@
 #                          PATCH  /patient/:id(.:format)                              patient#update
 #                          PUT    /patient/:id(.:format)                              patient#update
 #                          DELETE /patient/:id(.:format)                              patient#destroy
-#              staff_index GET    /staff(.:format)                                    staff#index
-#                          POST   /staff(.:format)                                    staff#create
-#                new_staff GET    /staff/new(.:format)                                staff#new
-#               edit_staff GET    /staff/:id/edit(.:format)                           staff#edit
-#                    staff GET    /staff/:id(.:format)                                staff#show
-#                          PATCH  /staff/:id(.:format)                                staff#update
-#                          PUT    /staff/:id(.:format)                                staff#update
-#                          DELETE /staff/:id(.:format)                                staff#destroy
+#                          PATCH  /visit/:visit_id/question/:id(.:format)             visit#question_answered
+#           question_visit POST   /visit/:id/question(.:format)                       visit#question
+#               note_visit POST   /visit/:id/note(.:format)                           visit#note
+#              visit_index GET    /visit(.:format)                                    visit#index
 #                 check_in POST   /check_in(.:format)                                 check_ins#create
 #                          GET    /check_in(.:format)                                 check_ins#index
 #
@@ -53,22 +49,20 @@ Rails.application.routes.draw do
   mount Documentation::Engine => "/docs"
   devise_for :users, :controllers => { :registrations => "registrations", :sessions => "sessions"}
 
-    resources :patient do
-      get 'staff/:id/department', to: 'patient#visit_department', as: :visit_department
-      member do
-        get 'timeline'
-      end
+  resources :patient do
+    get 'staff/:id/department', to: 'patient#visit_department', as: :visit_department
+    member do
+      get 'timeline'
     end
-
-    # resources :staff do
-    #   member do
-    #     get 'department'
-    #   end
-    # end
+  end
     
-    resources :staff
-
-  
+  resources :visit, only: [:index] do
+    patch 'question/:id', to: "visit#question_answered"
+    member do
+      post  'question'
+      post  'note'
+    end
+  end
 
   post 'check_in', to: 'check_ins#create', as: :check_in
   get 'check_in', to: 'check_ins#index'

@@ -1,5 +1,5 @@
 class PatientController < ApplicationController
-  before_action :authenticate_user_from_token!
+  # before_action :authenticate_user_from_token!
   before_action :set_patient_timeline, only: :timeline
   before_action :set_department_timeline, only: :visit_department
 
