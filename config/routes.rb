@@ -1,34 +1,41 @@
 # == Route Map
 #
-#                   Prefix Verb   URI Pattern                     Controller#Action
-#            documentation        /docs                           Documentation::Engine
-#         new_user_session GET    /users/sign_in(.:format)        sessions#new
-#             user_session POST   /users/sign_in(.:format)        sessions#create
-#     destroy_user_session DELETE /users/sign_out(.:format)       sessions#destroy
-#            user_password POST   /users/password(.:format)       devise/passwords#create
-#        new_user_password GET    /users/password/new(.:format)   devise/passwords#new
-#       edit_user_password GET    /users/password/edit(.:format)  devise/passwords#edit
-#                          PATCH  /users/password(.:format)       devise/passwords#update
-#                          PUT    /users/password(.:format)       devise/passwords#update
-# cancel_user_registration GET    /users/cancel(.:format)         registrations#cancel
-#        user_registration POST   /users(.:format)                registrations#create
-#    new_user_registration GET    /users/sign_up(.:format)        registrations#new
-#   edit_user_registration GET    /users/edit(.:format)           registrations#edit
-#                          PATCH  /users(.:format)                registrations#update
-#                          PUT    /users(.:format)                registrations#update
-#                          DELETE /users(.:format)                registrations#destroy
-#           timeline_index GET    /timeline(.:format)             timeline#index
-#                 timeline GET    /timeline/:id(.:format)         timeline#show
-#         department_staff GET    /staff/:id/department(.:format) staff#department
-#              staff_index GET    /staff(.:format)                staff#index
-#                          POST   /staff(.:format)                staff#create
-#                new_staff GET    /staff/new(.:format)            staff#new
-#               edit_staff GET    /staff/:id/edit(.:format)       staff#edit
-#                    staff GET    /staff/:id(.:format)            staff#show
-#                          PATCH  /staff/:id(.:format)            staff#update
-#                          PUT    /staff/:id(.:format)            staff#update
-#                          DELETE /staff/:id(.:format)            staff#destroy
-#                 check_in POST   /check_in(.:format)             check_ins#create
+#                   Prefix Verb   URI Pattern                                         Controller#Action
+#            documentation        /docs                                               Documentation::Engine
+#         new_user_session GET    /users/sign_in(.:format)                            sessions#new
+#             user_session POST   /users/sign_in(.:format)                            sessions#create
+#     destroy_user_session DELETE /users/sign_out(.:format)                           sessions#destroy
+#            user_password POST   /users/password(.:format)                           devise/passwords#create
+#        new_user_password GET    /users/password/new(.:format)                       devise/passwords#new
+#       edit_user_password GET    /users/password/edit(.:format)                      devise/passwords#edit
+#                          PATCH  /users/password(.:format)                           devise/passwords#update
+#                          PUT    /users/password(.:format)                           devise/passwords#update
+# cancel_user_registration GET    /users/cancel(.:format)                             registrations#cancel
+#        user_registration POST   /users(.:format)                                    registrations#create
+#    new_user_registration GET    /users/sign_up(.:format)                            registrations#new
+#   edit_user_registration GET    /users/edit(.:format)                               registrations#edit
+#                          PATCH  /users(.:format)                                    registrations#update
+#                          PUT    /users(.:format)                                    registrations#update
+#                          DELETE /users(.:format)                                    registrations#destroy
+#         timeline_patient GET    /patient/:id/timeline(.:format)                     patient#timeline
+# department_patient_staff GET    /patient/:patient_id/staff/:id/department(.:format) staff#department
+#      patient_staff_index GET    /patient/:patient_id/staff(.:format)                staff#index
+#                          POST   /patient/:patient_id/staff(.:format)                staff#create
+#        new_patient_staff GET    /patient/:patient_id/staff/new(.:format)            staff#new
+#       edit_patient_staff GET    /patient/:patient_id/staff/:id/edit(.:format)       staff#edit
+#            patient_staff GET    /patient/:patient_id/staff/:id(.:format)            staff#show
+#                          PATCH  /patient/:patient_id/staff/:id(.:format)            staff#update
+#                          PUT    /patient/:patient_id/staff/:id(.:format)            staff#update
+#                          DELETE /patient/:patient_id/staff/:id(.:format)            staff#destroy
+#            patient_index GET    /patient(.:format)                                  patient#index
+#                          POST   /patient(.:format)                                  patient#create
+#              new_patient GET    /patient/new(.:format)                              patient#new
+#             edit_patient GET    /patient/:id/edit(.:format)                         patient#edit
+#                  patient GET    /patient/:id(.:format)                              patient#show
+#                          PATCH  /patient/:id(.:format)                              patient#update
+#                          PUT    /patient/:id(.:format)                              patient#update
+#                          DELETE /patient/:id(.:format)                              patient#destroy
+#                 check_in POST   /check_in(.:format)                                 check_ins#create
 #
 # Routes for Documentation::Engine:
 #          new_page GET|POST  /new(/*path)(.:format)         documentation/pages#new
@@ -45,12 +52,18 @@ Rails.application.routes.draw do
   mount Documentation::Engine => "/docs"
   devise_for :users, :controllers => { :registrations => "registrations", :sessions => "sessions"}
 
-  resources :timeline, only: [:index, :show]
-  resources :staff do
+  resources :patient do
     member do
-      get 'department'
+      get 'timeline'
+    end
+    resources :staff do
+      member do
+        get 'department'
+      end
     end
   end
+
+  
 
   post 'check_in', to: 'check_ins#create', as: :check_in
   # The priority is based upon order of creation: first created -> highest priority.

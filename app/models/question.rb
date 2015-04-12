@@ -15,4 +15,8 @@
 class Question < ActiveRecord::Base
   belongs_to :patient
   belongs_to :visit
+
+  def unresolved?
+    self if self.resolved == false
+  end
 end
