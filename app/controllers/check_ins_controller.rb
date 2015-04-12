@@ -1,5 +1,4 @@
 class CheckInsController < ApplicationController
-  before_action :set_parties
 
   def create
 
@@ -11,18 +10,18 @@ class CheckInsController < ApplicationController
   # render json: @visit, status: :ok
   end
 
-  private
-  def set_parties
-    #  @staff = Staff.where(params[:staff_id]).first
-    #  @pid = Stay.where(bed_id: params[:bed_id]).first.patient.id
-    #  @patient = Patient.grab_patient_associations(@pid)
-    #  @visits = @patient.visits.select {|visit| visit.staff.department == s.department}
-    #  patient.staffs.each {|staff| staff.department == @staff.department}
-    #  patient.questions.each {|q| q.resolved == false}
-    # end
+  def index
+    @recent_check_in = Visit.where(:created_at => Time.now - 1.day..Time.now)
+    if @recent_check_in.exists?
+      @recent_check_in = @recent_check_in.first  #just for the demo, incase there are more than one checkins
+      render 'check_in/index.json.jbuilder', status: :ok
+    else
+      render json: false, status: :ok
+    end
   end
-end
 
+  private
+end
 
 # resp = HTTParty.post("http://54.90.20.225:8888/resource/auth/authentication", 
 #   {
