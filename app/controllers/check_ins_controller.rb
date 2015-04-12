@@ -1,4 +1,4 @@
-heroclass CheckInsController < ApplicationController
+class CheckInsController < ApplicationController
   before_action :set_parties
 
   def create
@@ -19,7 +19,6 @@ heroclass CheckInsController < ApplicationController
     #  patient.questions.each {|q| q.resolved == false}
     # end
   end
-  # .staffs.select {|staff| staff.department == s.department}
 end
 
 
