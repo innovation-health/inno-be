@@ -2,6 +2,11 @@ class CheckInsController < ApplicationController
   before_action :set_parties
 
   def create
+    #params coming in from matt
+    #Parameters: {"@personid"=>"770097295B92", "@facilityid"=>"3693CAFE1234", "@roomid"=>"11BADF00D111", "@statuscode"=>"201"}
+  @visit = Visit.new(:staff_id => params[:@personid], :patient_id => 1)
+  @visit.save
+  render json: @visit, status: :ok
   end
 
   private

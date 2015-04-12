@@ -56,11 +56,13 @@ Rails.application.routes.draw do
       # member do
       #   get 'timeline'
 
-    resources :staff do
-      member do
-        get 'department'
-      end
-    end
+    # resources :staff do
+    #   member do
+    #     get 'department'
+    #   end
+    # end
+    
+    resources :staff
 
   
 
