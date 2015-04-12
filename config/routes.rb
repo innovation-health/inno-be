@@ -58,6 +58,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations", :sessions => "sessions"}
 
     resources :patient
+    get 'patient/:id/timeline', to: 'patient#show'
       # member do
       #   get 'timeline'
 

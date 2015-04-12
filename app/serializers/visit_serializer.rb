@@ -1,18 +1,28 @@
 class VisitSerializer < ActiveModel::Serializer
-  attributes :id, :created_at, :staff
+  attributes :visit
 
-  has_one  :staff
-  has_one  :note
-  has_many :questions
+  # has_one  :staff
+  # has_one  :note
+  # has_many :questions
 
-  def staff
-    hsh = Hash.new
-    hsh[:staff_id]   = object.staff.id
-    hsh[:prefix]     = object.staff.prefix
-    hsh[:first_name] = object.staff.first_name
-    hsh[:last_name]  = object.staff.last_name
-    hsh[:department] = object.staff.department
+  def visit
+    hsh   = Hash.new
+    staff = object.staff
+    hsh[:time]       = object.created_at
+    hsh[:staff_id]   = staff.id
+    p                = staff.prefix
+    fn               = staff.first_name
+    ln               = staff.last_name
+    hsh[:name]       = staff.build_name(prefix: p, first_name: fn, last_name: ln )
+    hsh[:role]       = staff.role
+    hsh[:department] = staff.department
+    hsh[:note]       = object.note
+    hsh[:questions]  = object.questions
     hsh
+  end
+
+  def default_serializer_options
+    {root: true}
   end
 
 end

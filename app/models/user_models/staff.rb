@@ -32,4 +32,10 @@ class Staff < User
   
   has_many :visits
   has_many :patients, through: :visits 
+
+  
+  def build_name
+   self.prefix + " " + self.first_name + " " + self.last_name if self.prefix && self.first_name && self.last_name
+   self.first_name + " " + self.last_name if self.first_name && self.last_name
+  end
 end

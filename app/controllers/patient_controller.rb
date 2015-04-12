@@ -4,11 +4,13 @@ class PatientController < ApplicationController
 
   def show
     if !!@patient
-      render json: @visits, each_serializer: VisitSerializer, status: :ok
+      render "patient/show.json.jbuilder", status: :ok
+      # render json: @visits, root: "visits", each_serializer: VisitSerializer, status: :ok
     else
       render json: @patient.errors.full_messages, status: :not_found
     end
   end
+
 
 
   private
@@ -19,5 +21,4 @@ class PatientController < ApplicationController
     # @questions = @visits.map(&:questions).flatten.map(&:unresolved?)
     # @notes = @visits.map(&:note).compact
   end
-
 end

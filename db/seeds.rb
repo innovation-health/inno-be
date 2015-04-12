@@ -4,8 +4,8 @@ models.each {|model| model.all.delete_all}
 Patient.create(email: 'patient@gmail.com', password: 'p', title: 'Patient', first_name: 'Sally', last_name: 'Sue')
 pid = Patient.first.id
 
-Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Marina',  last_name:  'Costa',     title: 'Physician', role: 'Attending', department:  'Cardiology')
-Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Charles', last_name:  'Barnes',    title: 'Physician', role: 'Attending', department:  'General Surgery')
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Charles', last_name:  'Costa',     title: 'Physician', role: 'Attending', department:  'Cardiology')
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Marina',  last_name:  'Barnes',    title: 'Physician', role: 'Attending', department:  'General Surgery')
 Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Ilya',    last_name:  'Kovalyov',  title: 'Physician', role: 'Resident',  department:  'Cardiology')
 Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Lora',    last_name:  'Sedlacek',  title: 'Resident',  role: 'Attending', department:  'General Surgery ')
 Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Lora',    last_name:  'Sedlacek',  title: 'Resident',  role: 'Attending', department:  'General Surgery')
@@ -39,16 +39,20 @@ PrimaryTeam.create(patient_id: pid, staff_id: sssss)
 PrimaryTeam.create(patient_id: pid, staff_id: ssssss)
 PrimaryTeam.create(patient_id: pid, staff_id: sssssss)
 
+demo_doctor = Staff.where(first_name: "Charles").first
+demo_doctor.id = 770097295; demo_doctor.save
+
+
 Visit.create(created_at: DateTime.now.change({hour: 8, min: 30}), patient_id: pid, staff_id: rand_staff) 
 Visit.create(created_at: DateTime.now.change({hour: 9, min: 03}), patient_id: pid, staff_id: rand_staff) 
-Visit.create(created_at: DateTime.now.change({hour: 8, min: 20}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 8, min: 20}), patient_id: pid, staff_id: demo_doctor.id) 
 Visit.create(created_at: DateTime.now.change({hour: 8, min: 04}), patient_id: pid, staff_id: rand_staff) 
 Visit.create(created_at: DateTime.now.change({hour: 7, min: 48}), patient_id: pid, staff_id: rand_staff) 
-Visit.create(created_at: DateTime.now.change({hour: 6, min: 30}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 6, min: 30}), patient_id: pid, staff_id: demo_doctor.id) 
 Visit.create(created_at: DateTime.now.change({hour: 13, min: 30}), patient_id: pid, staff_id: rand_staff) 
 Visit.create(created_at: DateTime.now.change({hour: 21, min: 20}), patient_id: pid, staff_id: rand_staff) 
 Visit.create(created_at: DateTime.now.change({hour: 19, min: 50}), patient_id: pid, staff_id: rand_staff) 
-Visit.create(created_at: DateTime.now.change({hour: 19, min: 02}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 19, min: 02}), patient_id: pid, staff_id: demo_doctor.id) 
 Visit.create(created_at: DateTime.now.change({hour: 18, min: 02}), patient_id: pid, staff_id: rand_staff) 
 Visit.create(created_at: DateTime.now.change({hour: 17, min: 50}), patient_id: pid, staff_id: rand_staff) 
 Visit.create(created_at: DateTime.now.change({hour: 15, min: 20}), patient_id: pid, staff_id: rand_staff) 
@@ -66,9 +70,10 @@ Question.create(patient_id: pid, visit_id: rand_visit, question: 'What do I need
 
 Note.create(patient_id: pid, visit_id: rand_visit, note: 'Dr. S says that the kids can come visit today. Need to walk at least 5 laps today and use the spirometer. Had low BP yesterday which caused dizziness so they gave me an IV. Call nurse if I feel dizzy again')
 
+demo_visit_id = Visit.where(staff_id: demo_doctor.id).sample.id
 #QUESTIONS For cardiologists
-Question.create(patient_id: pid, visit_id: rand_visit, question: 'Why did my doctor ask for you to see me? Is my heart okay?')
-Question.create(patient_id: pid, visit_id: rand_visit, question: 'Why am I not taking my blood pressure medicine anymore?')
+Question.create(patient_id: pid, visit_id: demo_visit_id, question: 'Why did my doctor ask for you to see me? Is my heart okay?')
+Question.create(patient_id: pid, visit_id: demo_visit_id, question: 'Why am I not taking my blood pressure medicine anymore?')
 #resolved
 Question.create(patient_id: pid, resolved: true, visit_id: rand_visit, question: 'Why was I dizzy when I got up to walk yesterday?)')
 Question.create(patient_id: pid, resolved: true, visit_id: rand_visit, question: 'Can I restart taking my Hytrin?')
