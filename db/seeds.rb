@@ -1,39 +1,74 @@
-User.create!([
-  {email: "b@b.com", password: "a", encrypted_password: "$2a$10$rzh.bOVw29oq78Zsz5BG0uEJpTdzHJsl83FTaPYoP.wCVMR.7JShu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, authentication_token: "77-Q5CdBhZ_ipPMD3c4x", admin: false, type: "Patient", prefix: nil, title: "patient", first_name: "Brian", last_name: "Rossetti", role: nil, department: nil},
-  {email: "d@d.com", password: "a", encrypted_password: "$2a$10$rA9fS9S5J3ETKgXJmMKXk.Sys8qWfX6ZXAl8ticZ3eGHhJ.o.1MJO", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, authentication_token: "xvg51taSmh3jREszbNhE", admin: false, type: "Staff", prefix: "Dr.", title: "Physician", first_name: "Bob", last_name: "Holben", role: "Internist", department: "test"},
-  {email: "dd@d.com", password: "a", encrypted_password: "$2a$10$M7eizG5VNe74Rb5F0kdb2.THJWgzMq51PdA9uCshLwbb6WqTd138.", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, authentication_token: "Cdyiaz2x6Fp1QFombHV3", admin: false, type: "Staff", prefix: "Dr.", title: "Gastro", first_name: "Susie", last_name: "Scalpal", role: "Gastro", department: "test1"},
-  {email: "ddd@d.com", password: "a", encrypted_password: "$2a$10$55YnHOyuL8Wd09moKsThbOuQbJ2WMxGzWdoz2BrcT9PScNxJFqec.", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, authentication_token: "NFN-u99MATunXGVnYVGM", admin: false, type: "Staff", prefix: "Dr.", title: "Physician", first_name: "Sammy", last_name: "Shakeyhands", role: "Surgeon", department: "test"},
-  {email: "dddd@d.com", password: "a", encrypted_password: "$2a$10$VGIeWroyiD/1YYhM5McqxeKITy6GlHSoPmM7mRwluB9fjFaSuWNCq", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, authentication_token: "3yy7fD4VTJCCCosZxzb5", admin: false, type: "Staff", prefix: "Dr.", title: "Gastro", first_name: "Dechant", last_name: "Dylan", role: "Gastro", department: "test1"},
-  {email: "test@t.com", password: "a", encrypted_password: "$2a$10$L8O7.bZ2CGKUQaG4s5LPCOHUt.HICwyGmUxliljMRKZnFOwBk.c7m", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, authentication_token: "Jybm6BbDgaQ6p4g8v_Y2", admin: false, type: "Staff", prefix: nil, title: nil, first_name: nil, last_name: nil, role: nil, department: nil}
-])
-Note.create!([
-  {patient_id: 1, note: "testgingingi", visit_id: 1},
-  {patient_id: 1, note: "testingiggnig", visit_id: nil}
-])
-PrimaryTeam.create!([
-  {patient_id: 1, staff_id: 2},
-  {patient_id: 1, staff_id: 3},
-  {patient_id: 1, staff_id: 4},
-  {patient_id: 1, staff_id: 5}
-])
-Question.create!([
-  {question: "testingigng", resolved: false, patient_id: 1, visit_id: 4},
-  {question: nil, resolved: false, patient_id: nil, visit_id: 4},
-  {question: "testingigng", resolved: false, patient_id: nil, visit_id: 4}
-])
-Visit.create!([
-  {staff_id: 2, patient_id: 1},
-  {staff_id: 3, patient_id: 1},
-  {staff_id: 4, patient_id: 1},
-  {staff_id: 5, patient_id: 1}
-])
-Patient.create!([
-  {email: "eeee@b.com", password: "a", encrypted_password: "$2a$10$rzh.bOVw29oq78Zsz5BG0uEJpTdzHJsl83FTaPYoP.wCVMR.7JShu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, authentication_token: "77-Q5CdBhZ_ipPMD3c4x", admin: false, type: "Patient", prefix: nil, title: "patient", first_name: "Brian", last_name: "Rossetti", role: nil, department: nil}
-])
-Staff.create!([
-  {email: "asdvf@d.com", password: "a", encrypted_password: "$2a$10$rA9fS9S5J3ETKgXJmMKXk.Sys8qWfX6ZXAl8ticZ3eGHhJ.o.1MJO", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, authentication_token: "xvg51taSmh3jREszbNhE", admin: false, type: "Staff", prefix: "Dr.", title: "Physician", first_name: "Bob", last_name: "Holben", role: "Internist", department: "test"},
-  {email: "dddsfartg4@d.com", password: "a", encrypted_password: "$2a$10$M7eizG5VNe74Rb5F0kdb2.THJWgzMq51PdA9uCshLwbb6WqTd138.", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, authentication_token: "Cdyiaz2x6Fp1QFombHV3", admin: false, type: "Staff", prefix: "Dr.", title: "Gastro", first_name: "Susie", last_name: "Scalpal", role: "Gastro", department: "test1"},
-  {email: "ddd4g3@d.com", password: "a", encrypted_password: "$2a$10$55YnHOyuL8Wd09moKsThbOuQbJ2WMxGzWdoz2BrcT9PScNxJFqec.", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, authentication_token: "NFN-u99MATunXGVnYVGM", admin: false, type: "Staff", prefix: "Dr.", title: "Physician", first_name: "Sammy", last_name: "Shakeyhands", role: "Surgeon", department: "test"},
-  {email: "ddd43t34d@d.com", password: "a", encrypted_password: "$2a$10$VGIeWroyiD/1YYhM5McqxeKITy6GlHSoPmM7mRwluB9fjFaSuWNCq", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, authentication_token: "3yy7fD4VTJCCCosZxzb5", admin: false, type: "Staff", prefix: "Dr.", title: "Gastro", first_name: "Dechant", last_name: "Dylan", role: "Gastro", department: "test1"},
-  {email: "34543@t.com", password: "a", encrypted_password: "$2a$10$L8O7.bZ2CGKUQaG4s5LPCOHUt.HICwyGmUxliljMRKZnFOwBk.c7m", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, authentication_token: "Jybm6BbDgaQ6p4g8v_Y2", admin: false, type: "Staff", prefix: nil, title: nil, first_name: nil, last_name: nil, role: nil, department: nil}
-])
+models = [Patient, Staff, Note, PrimaryTeam, Question, Visit]
+models.each {|model| model.all.delete_all}
+
+Patient.create(email: 'patient@gmail.com', password: 'p', title: 'Patient', first_name: 'Sally', last_name: 'Sue')
+pid = Patient.first.id
+
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Marina',  last_name:  'Costa',     title: 'Physician', role: 'Attending', department:  'Cardiology')
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Charles', last_name:  'Barnes',    title: 'Physician', role: 'Attending', department:  'General Surgery')
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Ilya',    last_name:  'Kovalyov',  title: 'Physician', role: 'Resident',  department:  'Cardiology')
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Lora',    last_name:  'Sedlacek',  title: 'Resident',  role: 'Attending', department:  'General Surgery ')
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Lora',    last_name:  'Sedlacek',  title: 'Resident',  role: 'Attending', department:  'General Surgery')
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Dennis',  last_name:  'Schulze',   title: 'Physician', role: 'Resident',  department:  'Nephrology')
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Marina',  last_name:  'Costa',     title: 'Physician', role: 'Attending', department:  'Cardiology')
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Ilya',    last_name:  'Kovalyov',  title: 'Physician', role: 'Resident',  department:  'Cardiology')
+Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Julien', last_name: 'Nobert',   title: 'Nurse', department: 'Nursing') 
+Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Kristi', last_name: 'Jones',    title: 'Nurse', department: 'Nursing') 
+Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Kristi', last_name: 'Jones',    title: 'Nurse', department: 'Nursing') 
+Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Kristi', last_name: 'Jones',    title: 'Nurse', department: 'Nursing') 
+Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Julien', last_name: 'Nobert',   title: 'Nurse', department: 'Nursing') 
+
+def rand_staff
+  Staff.all.sample.id
+end
+
+
+s       = Staff.find_by_first_name('Marina')
+ss      = Staff.find_by_first_name('Charles')
+sss     = Staff.find_by_first_name('Ilya')
+ssss    = Staff.find_by_first_name('Lora')
+sssss   = Staff.find_by_first_name('Dennis')
+ssssss  = Staff.find_by_first_name('Julien')
+sssssss = Staff.find_by_first_name('Kristi')
+
+PrimaryTeam.create(patient_id: pid, staff_id: s)
+PrimaryTeam.create(patient_id: pid, staff_id: ss)
+PrimaryTeam.create(patient_id: pid, staff_id: sss)
+PrimaryTeam.create(patient_id: pid, staff_id: ssss)
+PrimaryTeam.create(patient_id: pid, staff_id: sssss)
+PrimaryTeam.create(patient_id: pid, staff_id: ssssss)
+PrimaryTeam.create(patient_id: pid, staff_id: sssssss)
+
+Visit.create(created_at: DateTime.now.change({hour: 8, min: 30}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 9, min: 03}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 8, min: 20}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 8, min: 04}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 7, min: 48}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 6, min: 30}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 13, min: 30}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 21, min: 20}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 19, min: 50}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 19, min: 02}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 18, min: 02}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 17, min: 50}), patient_id: pid, staff_id: rand_staff) 
+Visit.create(created_at: DateTime.now.change({hour: 15, min: 20}), patient_id: pid, staff_id: rand_staff) 
+
+def rand_visit
+  Visit.all.sample.id
+end
+
+
+#open
+Question.create(patient_id: pid, visit_id: rand_visit, question: 'When can I start eating normal food?')
+Question.create(patient_id: pid, visit_id: rand_visit, question: 'Can I play football again next week?')
+Question.create(patient_id: pid, visit_id: rand_visit, question: 'What do I need to watch for after I go home?')
+
+
+Note.create(patient_id: pid, visit_id: rand_visit, note: 'Dr. S says that the kids can come visit today. Need to walk at least 5 laps today and use the spirometer. Had low BP yesterday which caused dizziness so they gave me an IV. Call nurse if I feel dizzy again')
+
+#QUESTIONS For cardiologists
+Question.create(patient_id: pid, visit_id: rand_visit, question: 'Why did my doctor ask for you to see me? Is my heart okay?')
+Question.create(patient_id: pid, visit_id: rand_visit, question: 'Why am I not taking my blood pressure medicine anymore?')
+#resolved
+Question.create(patient_id: pid, resolved: true, visit_id: rand_visit, question: 'Why was I dizzy when I got up to walk yesterday?)')
+Question.create(patient_id: pid, resolved: true, visit_id: rand_visit, question: 'Can I restart taking my Hytrin?')

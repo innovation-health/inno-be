@@ -11,21 +11,13 @@ class PatientController < ApplicationController
   end
 
 
-
   private
 
   def set_patient_timeline
     @patient = Patient.grab_patient_associations(params[:id])
     @visits = @patient.visits
-    @questions = @visits.map(&:questions).flatten.map(&:unresolved?)
-    @notes = @visits.map(&:note).compact
+    # @questions = @visits.map(&:questions).flatten.map(&:unresolved?)
+    # @notes = @visits.map(&:note).compact
   end
 
-
 end
-
-# Staff.create(email: "d@d.com", password: "d", title: "Physician", prefix: "Dr.", role: "Internist" , department: "test",first_name: "Bob", last_name: "Holben")
-# Staff.create(email: "dd@d.com", password: "d", title: "Gastro", prefix: "Dr.", role: "Gastro" , department: "test1", first_name: "Susie", last_name: "Scalpal")
-# Staff.create(email: "ddd@d.com", password: "d", title: "Physician", prefix: "Dr.", role: "Surgeon" , department: "test",first_name: "Sammy", last_name: "Shakeyhands")
-# qStaff.create(email: "dddd@d.com", password: "d", title: "Gastro", prefix: "Dr.", role: "Gastro" , department: "test1", first_name: "Dechant", last_name: "Dylan")
-# Patient.create(email:"b@b.com", password: "b", title: "patient", first_name: "Brian", last_name: "Rossetti")

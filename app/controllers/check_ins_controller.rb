@@ -1,4 +1,4 @@
-class CheckInsController < ApplicationController
+heroclass CheckInsController < ApplicationController
   before_action :set_parties
 
   def create
@@ -11,13 +11,12 @@ class CheckInsController < ApplicationController
 
   private
   def set_parties
-    # @staff = Staff.where(params[:staff_id]).first
-    # @pid = Stay.where(bed_id: params[:bed_id]).first.patient.id
-    # @patient = Patient.grab_patient_associations(@pid)
-    # @visits = @patient.visits.select {|visit| visit.staff.department == s.department}
-    #   patient.staffs.each {|staff| staff.department == @staff.department}
-    #   patient.questions.each {|q| q.resolved == false}
-
+    #  @staff = Staff.where(params[:staff_id]).first
+    #  @pid = Stay.where(bed_id: params[:bed_id]).first.patient.id
+    #  @patient = Patient.grab_patient_associations(@pid)
+    #  @visits = @patient.visits.select {|visit| visit.staff.department == s.department}
+    #  patient.staffs.each {|staff| staff.department == @staff.department}
+    #  patient.questions.each {|q| q.resolved == false}
     # end
   end
   # .staffs.select {|staff| staff.department == s.department}

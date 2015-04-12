@@ -19,7 +19,7 @@
 #  admin                  :boolean          default(FALSE)
 #  type                   :string
 #  prefix                 :string
-#  title                  :string
+#  title       pat           :string
 #  first_name             :string
 #  last_name              :string
 #  role                   :string
@@ -41,4 +41,9 @@ class Patient < User
   def self.grab_patient_associations(id)
     Patient.includes(visits: [:staff, :note, :questions]).where(id: id).first
   end
+
+  def primary_team_includes?(staff_id)
+    self.primary_team.map(&:staff_id).include? staff_id
+  end
+
 end

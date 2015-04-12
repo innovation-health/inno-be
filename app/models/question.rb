@@ -17,6 +17,6 @@ class Question < ActiveRecord::Base
   belongs_to :visit
 
   def unresolved?
-    self if self.resolved == false
+    self.resolved == false ? self : nil
   end
 end
