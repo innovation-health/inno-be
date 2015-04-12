@@ -18,22 +18,10 @@ class CheckInsController < ApplicationController
     else
       render json: false, status: :ok
     end
-    #patient id
-    #staff id
   end
 
   private
-  def set_parties
-    #  @staff = Staff.where(params[:staff_id]).first
-    #  @pid = Stay.where(bed_id: params[:bed_id]).first.patient.id
-    #  @patient = Patient.grab_patient_associations(@pid)
-    #  @visits = @patient.visits.select {|visit| visit.staff.department == s.department}
-    #  patient.staffs.each {|staff| staff.department == @staff.department}
-    #  patient.questions.each {|q| q.resolved == false}
-    # end
-  end
 end
-
 
 # resp = HTTParty.post("http://54.90.20.225:8888/resource/auth/authentication", 
 #   {
