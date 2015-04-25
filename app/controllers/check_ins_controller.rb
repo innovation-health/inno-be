@@ -19,6 +19,10 @@ class CheckInsController < ApplicationController
     end
   end
 
+  def alert
+    AlertJob.set(wait_until: AlertJob.confirm_visit)
+  end
+
   private
 end
 

@@ -12,13 +12,13 @@ class TwilioAlert
 
   def send_text_message
  
-    twilio_sid   = ENV['account_sid']
-    twilio_token = ENV['auth_token']
+    twilio_sid   = ENV['twilio_sid']
+    twilio_token = ENV['twilio_auth_token']
     twilio_phone = ENV['twillio_phone']
  
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
  
-    @twilio_client.account.sms.messages.create(
+      @twilio_client.account.messages.create(
       :from => "+1#{twilio_phone}",
       :to => @staff_waiting.cell,
       :body => "#{@staff_visiting.name} has stopped by #{@patient.name}'s room"

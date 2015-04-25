@@ -24,6 +24,7 @@
 #  last_name              :string
 #  role                   :string
 #  department             :string           default("")
+#  cell                   :string
 #
 
 class Staff < User

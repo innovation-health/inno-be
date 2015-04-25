@@ -66,6 +66,7 @@ Rails.application.routes.draw do
 
   post 'check_in', to: 'check_ins#create', as: :check_in
   get 'check_in', to: 'check_ins#index'
+  post 'check_in/alert', to: 'check_in#alert', as: :alert
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

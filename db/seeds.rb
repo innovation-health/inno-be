@@ -5,19 +5,19 @@ Patient.create(email: 'patient@gmail.com', password: 'p', title: 'Patient', firs
 patient = Patient.first; patient.id = 1; patient.save
 pid = Patient.first.id
 
-Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Charles', last_name:  'Costa',     title: 'Physician', role: 'Attending', department:  'Cardiology')
-Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Marina',  last_name:  'Barnes',    title: 'Physician', role: 'Attending', department:  'General Surgery')
-Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Ilya',    last_name:  'Kovalyov',  title: 'Physician', role: 'Resident',  department:  'Cardiology')
-Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Lora',    last_name:  'Sedlacek',  title: 'Resident',  role: 'Attending', department:  'General Surgery ')
-Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Lora',    last_name:  'Sedlacek',  title: 'Resident',  role: 'Attending', department:  'General Surgery')
-Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Dennis',  last_name:  'Schulze',   title: 'Physician', role: 'Resident',  department:  'Nephrology')
-Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Marina',  last_name:  'Costa',     title: 'Physician', role: 'Attending', department:  'Cardiology')
-Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Ilya',    last_name:  'Kovalyov',  title: 'Physician', role: 'Resident',  department:  'Cardiology')
-Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Julien', last_name: 'Nobert',   title: 'Nurse', department: 'Nursing') 
-Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Kristi', last_name: 'Jones',    title: 'Nurse', department: 'Nursing') 
-Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Kristi', last_name: 'Jones',    title: 'Nurse', department: 'Nursing') 
-Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Kristi', last_name: 'Jones',    title: 'Nurse', department: 'Nursing') 
-Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Julien', last_name: 'Nobert',   title: 'Nurse', department: 'Nursing') 
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Charles', last_name:  'Costa',     title: 'Physician', role: 'Attending', department:  'Cardiology', cell: Faker::Number.number(10))
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Marina',  last_name:  'Barnes',    title: 'Physician', role: 'Attending', department:  'General Surgery', cell: Faker::Number.number(10))
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Ilya',    last_name:  'Kovalyov',  title: 'Physician', role: 'Resident',  department:  'Cardiology', cell: Faker::Number.number(10))
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Lora',    last_name:  'Sedlacek',  title: 'Resident',  role: 'Attending', department:  'General Surgery ', cell: Faker::Number.number(10))
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Lora',    last_name:  'Sedlacek',  title: 'Resident',  role: 'Attending', department:  'General Surgery', cell: Faker::Number.number(10))
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Dennis',  last_name:  'Schulze',   title: 'Physician', role: 'Resident',  department:  'Nephrology', cell: Faker::Number.number(10))
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Marina',  last_name:  'Costa',     title: 'Physician', role: 'Attending', department:  'Cardiology', cell: Faker::Number.number(10))
+Staff.create(email: Faker::Internet.email, password: "password,", prefix: 'Dr.',  first_name: 'Ilya',    last_name:  'Kovalyov',  title: 'Physician', role: 'Resident',  department:  'Cardiology', cell: Faker::Number.number(10))
+Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Julien', last_name: 'Nobert', title: 'Nurse', department: 'Nursing', cell: Faker::Number.number(10))
+Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Kristi', last_name: 'Jones',  title: 'Nurse', department: 'Nursing', cell: Faker::Number.number(10))
+Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Kristi', last_name: 'Jones',  title: 'Nurse', department: 'Nursing', cell: Faker::Number.number(10))
+Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Kristi', last_name: 'Jones',  title: 'Nurse', department: 'Nursing', cell: Faker::Number.number(10))
+Staff.create(email: Faker::Internet.email, password: "password,", first_name: 'Julien', last_name: 'Nobert', title: 'Nurse', department: 'Nursing', cell: Faker::Number.number(10))
 
 def rand_staff
   Staff.all.sample.id
