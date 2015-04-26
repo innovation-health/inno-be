@@ -24,6 +24,7 @@
 #  last_name              :string
 #  role                   :string
 #  department             :string           default("")
+#  cell                   :string           default("")
 #
 
 class Staff < User
@@ -32,7 +33,9 @@ class Staff < User
   has_many :patients, through: :primary_teams
   
   has_many :visits
-  has_many :patients, through: :visits 
+  has_many :patients, through: :visits
+
+  has_many :alerts 
 
   
   def build_name

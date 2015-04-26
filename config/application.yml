@@ -11,6 +11,7 @@
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
 
-
-#to add keys to heroku config use below in local console
-#figaro heroku:set -e production
+twilio_phone: '4156589140'
+twilio_url: 'http://twimlets.com/echo?Twiml=%3CResponse%3E%3CSms%3EHello+Brian%2C+thanks+for+the+message%21%3C%2FSms%3E%3C%2FResponse%3E'
+twilio_auth_token: 'b1f33b75e2110703774a83396b800a65'
+twilio_sid: 'ACca1414fbd6f37f801d55d6e9ca911860'

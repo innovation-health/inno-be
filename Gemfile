@@ -64,11 +64,25 @@ gem 'faker'
 
 gem 'pry-rails'
 
+
+# Twillio number - (415) 658-9140
+# request url:     http://twimlets.com/echo?Twiml=%3CResponse%3E%3CSms%3EHello+Brian%2C+thanks+for+the+message%21%3C%2FSms%3E%3C%2FResponse%3E
+gem 'twilio-ruby', '~> 3.12'
+
+# for alert queue
+gem 'sucker_punch'
+
 group :development, :test do
   #proxylocal for bob
   gem 'proxylocal'
 
   gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-remote'
+  # gem 'pry-nav'
+  gem 'pry-toys'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 
   gem 'better_errors'
   gem 'binding_of_caller'

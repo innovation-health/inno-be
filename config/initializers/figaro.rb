@@ -1,1 +1,6 @@
-#Figaro.require_keys("pusher_app_id", "pusher_key", "pusher_secret")
+Figaro.require_keys(
+  "twilio_phone", 
+  "twilio_url", 
+  "twilio_auth_token",
+  "twilio_sid"
+)

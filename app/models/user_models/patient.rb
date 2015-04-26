@@ -24,12 +24,14 @@
 #  last_name              :string
 #  role                   :string
 #  department             :string           default("")
+#  cell                   :string           default("")
 #
 
 class Patient < User
 
   has_many :notes
   has_many :questions
+  has_many :alerts
 
   has_many :primary_team
   has_many :staffs, through: :primary_teams

@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412135804) do
+ActiveRecord::Schema.define(version: 20150426030551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alerts", force: :cascade do |t|
+    t.integer  "alerted_id"
+    t.integer  "alertee_id"
+    t.integer  "patient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "alerts", ["alerted_id"], name: "index_alerts_on_alerted_id", using: :btree
+  add_index "alerts", ["alertee_id", "patient_id"], name: "index_alerts_on_alertee_id_and_patient_id", using: :btree
 
   create_table "documentation_pages", force: :cascade do |t|
     t.string   "title"
@@ -93,6 +104,7 @@ ActiveRecord::Schema.define(version: 20150412135804) do
     t.string   "last_name"
     t.string   "role"
     t.string   "department",             default: ""
+    t.string   "cell",                   default: ""
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", using: :btree
