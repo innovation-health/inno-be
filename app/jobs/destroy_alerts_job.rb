@@ -2,6 +2,6 @@ class DestroyAlertsJob < ActiveJob::Base
   queue_as :default
 
   def perform(alerts)
-    alerts.each {|alert| alert.destroy} unless alert_list.empty?
+    alerts.each {|alert| alert.destroy} unless alerts.empty?
   end
 end
