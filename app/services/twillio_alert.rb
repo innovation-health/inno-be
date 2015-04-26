@@ -1,9 +1,9 @@
 class TwilioAlert
 
-  def initialize(staff_waiting, staff_visiting, patient)
-    @staff_waiting   ||= staff_waiting
-    @staff_visiting  ||= staff_visiting
-    @patient         ||= patient
+  def initialize(staff_cell, staff_id, patient_id)
+    @staff_alerted_cell  ||= staff_cell
+    @staff_visiting      ||= Staff.find staff_id
+    @patient             ||= Patient.find patient_id
   end
 
   def call

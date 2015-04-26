@@ -24,7 +24,7 @@
 #  last_name              :string
 #  role                   :string
 #  department             :string           default("")
-#  cell                   :string
+#  cell                   :string           default("")
 #
 
 class User < ActiveRecord::Base

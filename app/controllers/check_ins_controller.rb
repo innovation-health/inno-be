@@ -4,8 +4,9 @@ class CheckInsController < ApplicationController
   def create
     #params coming in from matt
     #Parameters: {"@personid"=>"770097295", "@facilityid"=>"3693CAFE1234", "@roomid"=>"11BADF00D111", "@statuscode"=>"201"}
-    @visit = Visit.new(:staff_id => params[:@personid], :patient_id => 1)
-    @visit.save
+    @visit = Visit.create(:staff_id => params[:@personid], :patient_id => 1)
+    alert_list = Alert.list_cell_alerts(params[:@personid], params[:patient_id])
+    alert_list.each {|cell| TwilioAlert.new(cell, params[:@personid], params[:patient_id]}.call unless alert_list.empty?
     render json: @visit, status: :ok
   end
 
@@ -20,10 +21,19 @@ class CheckInsController < ApplicationController
   end
 
   def alert
-    AlertJob.set(wait_until: AlertJob.confirm_visit)
+    @alert = Alert.create(alert_params)
+    if @alert
+      render json: @alert, message: "alert created", status: :ok
+    else
+      render json: @alert.errors.full_messages, status: :unprocessable_entty
+    end
   end
 
   private
+
+  def alert_params
+    params.require(:alert).permit(:alerted_id, :alertee_id, :patient_id)
+  end
 end
 
 

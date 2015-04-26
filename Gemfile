@@ -79,7 +79,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-remote'
-  gem 'pry-nav'
+  # gem 'pry-nav'
   gem 'pry-toys'
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
